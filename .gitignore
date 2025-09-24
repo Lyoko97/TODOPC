@@ -1,0 +1,23 @@
+# NetBeans
+nbproject/private/
+build/
+dist/
+nbbuild/
+nbdist/
+nbactions.xml
+nb-configuration.xml
+
+# Java
+*.class
+*.log
+
+# IDEs
+*.iml
+.idea/
+*.iws
+*.ipr
+out/
+
+# Sistema operativo
+.DS_Store
+Thumbs.db
