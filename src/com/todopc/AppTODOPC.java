@@ -110,24 +110,15 @@ public class AppTODOPC {
                 break;
 
             case 2: // Tablet
-                Double pantT = InputUtils.promptPositiveDouble("Pantalla (pulgadas):");
-                if (pantT == null) {
-                    return;
-                }
-                Integer almT = InputUtils.promptPositiveInt("Almacenamiento (GB):");
-                if (almT == null) {
-                    return;
-                }
-                String conect = InputUtils.promptNonEmpty("Conectividad (WiFi / WiFi+LTE):");
-                if (conect == null) {
-                    return;
-                }
-                String so = InputUtils.promptNonEmpty("Sistema Operativo (Android/iPadOS/Windows):");
-                if (so == null) {
-                    return;
-                }
-                inv.addTablet(new Tablet(marca, modelo, precio, pantT, almT, conect, so));
+                String fabricante = InputUtils.promptNonEmpty("Fabricante:");
+                String micro = InputUtils.promptNonEmpty("Microprocesador:");
+                Double pantalla = InputUtils.promptPositiveDouble("Tamaño diagonal de pantalla (pulgadas):");
+                String tipoPantalla = InputUtils.promptNonEmpty("Tipo de pantalla (Capacitiva/Resistiva):");
+                Integer memoria = InputUtils.promptPositiveInt("Tamaño memoria NAND (GB):");
+                String so = InputUtils.promptNonEmpty("Sistema Operativo:");
+                inv.addTablet(new Tablet(fabricante, modelo, precio, micro, pantalla, tipoPantalla, memoria, so));
                 JOptionPane.showMessageDialog(null, "Tablet registrada correctamente.");
+
                 break;
         }
     }

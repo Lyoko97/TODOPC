@@ -1,37 +1,42 @@
 package com.todopc.model;
 
-
 public class Tablet extends Equipo {
-private double pulgadasPantalla;
-private int almacenamientoGB;
-private String conectividad; // WiFi / WiFi+LTE
-private String sistemaOperativo; // Android / iPadOS / Windows
+    private String microprocesador;
+    private double tamanoPantalla;
+    private String tipoPantalla; // Capacitiva / Resistiva
+    private int memoriaNAND;     // en GB
+    private String sistemaOperativo;
 
+    public Tablet(String fabricante, String modelo, double precio, 
+                  String microprocesador, double tamanoPantalla, 
+                  String tipoPantalla, int memoriaNAND, String sistemaOperativo) {
+        super(fabricante, modelo, precio);
+        this.microprocesador = microprocesador;
+        this.tamanoPantalla = tamanoPantalla;
+        this.tipoPantalla = tipoPantalla;
+        this.memoriaNAND = memoriaNAND;
+        this.sistemaOperativo = sistemaOperativo;
+    }
 
-public Tablet(String marca, String modelo, double precio, double pulgadasPantalla, int almacenamientoGB,
-String conectividad, String sistemaOperativo) {
-super(marca, modelo, precio);
-this.pulgadasPantalla = pulgadasPantalla;
-this.almacenamientoGB = almacenamientoGB;
-this.conectividad = conectividad;
-this.sistemaOperativo = sistemaOperativo;
-}
+    public String getMicroprocesador() { return microprocesador; }
+    public void setMicroprocesador(String microprocesador) { this.microprocesador = microprocesador; }
 
+    public double getTamanoPantalla() { return tamanoPantalla; }
+    public void setTamanoPantalla(double tamanoPantalla) { this.tamanoPantalla = tamanoPantalla; }
 
-public double getPulgadasPantalla() { return pulgadasPantalla; }
-public void setPulgadasPantalla(double pulgadasPantalla) { this.pulgadasPantalla = pulgadasPantalla; }
-public int getAlmacenamientoGB() { return almacenamientoGB; }
-public void setAlmacenamientoGB(int almacenamientoGB) { this.almacenamientoGB = almacenamientoGB; }
-public String getConectividad() { return conectividad; }
-public void setConectividad(String conectividad) { this.conectividad = conectividad; }
-public String getSistemaOperativo() { return sistemaOperativo; }
-public void setSistemaOperativo(String sistemaOperativo) { this.sistemaOperativo = sistemaOperativo; }
+    public String getTipoPantalla() { return tipoPantalla; }
+    public void setTipoPantalla(String tipoPantalla) { this.tipoPantalla = tipoPantalla; }
 
+    public int getMemoriaNAND() { return memoriaNAND; }
+    public void setMemoriaNAND(int memoriaNAND) { this.memoriaNAND = memoriaNAND; }
 
-@Override
-public String toString() {
-return "[Tablet] " + super.toString() +
-String.format(" | Pantalla: %.1f\" | Almacenamiento: %dGB | Conectividad: %s | SO: %s",
-pulgadasPantalla, almacenamientoGB, conectividad, sistemaOperativo);
-}
+    public String getSistemaOperativo() { return sistemaOperativo; }
+    public void setSistemaOperativo(String sistemaOperativo) { this.sistemaOperativo = sistemaOperativo; }
+
+    @Override
+    public String toString() {
+        return "[Tablet] " + super.toString() +
+               String.format(" | Microprocesador: %s | Pantalla: %.1f\" | Tipo: %s | Memoria NAND: %dGB | SO: %s",
+                             microprocesador, tamanoPantalla, tipoPantalla, memoriaNAND, sistemaOperativo);
+    }
 }
