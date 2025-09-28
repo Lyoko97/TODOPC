@@ -1,25 +1,19 @@
 package com.todopc.model;
 
 public class Tablet extends Equipo {
-    private String microprocesador;
-    private double tamanoPantalla;
-    private String tipoPantalla; // Capacitiva / Resistiva
-    private int memoriaNAND;     // en GB
+    private double tamanoPantalla;     // diagonal pulgadas
+    private String tipoPantalla;       // Capacitiva / Resistiva
+    private int memoriaNANDGB;         // GB
     private String sistemaOperativo;
 
-    public Tablet(String fabricante, String modelo, double precio, 
-                  String microprocesador, double tamanoPantalla, 
-                  String tipoPantalla, int memoriaNAND, String sistemaOperativo) {
-        super(fabricante, modelo, precio);
-        this.microprocesador = microprocesador;
+    public Tablet(String fabricante, String modelo, String microprocesador,
+                  double tamanoPantalla, String tipoPantalla, int memoriaNANDGB, String sistemaOperivo) {
+        super(fabricante, modelo, microprocesador);
         this.tamanoPantalla = tamanoPantalla;
         this.tipoPantalla = tipoPantalla;
-        this.memoriaNAND = memoriaNAND;
-        this.sistemaOperativo = sistemaOperativo;
+        this.memoriaNANDGB = memoriaNANDGB;
+        this.sistemaOperativo = sistemaOperivo;
     }
-
-    public String getMicroprocesador() { return microprocesador; }
-    public void setMicroprocesador(String microprocesador) { this.microprocesador = microprocesador; }
 
     public double getTamanoPantalla() { return tamanoPantalla; }
     public void setTamanoPantalla(double tamanoPantalla) { this.tamanoPantalla = tamanoPantalla; }
@@ -27,8 +21,8 @@ public class Tablet extends Equipo {
     public String getTipoPantalla() { return tipoPantalla; }
     public void setTipoPantalla(String tipoPantalla) { this.tipoPantalla = tipoPantalla; }
 
-    public int getMemoriaNAND() { return memoriaNAND; }
-    public void setMemoriaNAND(int memoriaNAND) { this.memoriaNAND = memoriaNAND; }
+    public int getMemoriaNANDGB() { return memoriaNANDGB; }
+    public void setMemoriaNANDGB(int memoriaNANDGB) { this.memoriaNANDGB = memoriaNANDGB; }
 
     public String getSistemaOperativo() { return sistemaOperativo; }
     public void setSistemaOperativo(String sistemaOperativo) { this.sistemaOperativo = sistemaOperativo; }
@@ -36,7 +30,7 @@ public class Tablet extends Equipo {
     @Override
     public String toString() {
         return "[Tablet] " + super.toString() +
-               String.format(" | Microprocesador: %s | Pantalla: %.1f\" | Tipo: %s | Memoria NAND: %dGB | SO: %s",
-                             microprocesador, tamanoPantalla, tipoPantalla, memoriaNAND, sistemaOperativo);
+                String.format(" | Pantalla: %.1f\" | Tipo: %s | NAND: %dGB | SO: %s",
+                        tamanoPantalla, tipoPantalla, memoriaNANDGB, sistemaOperativo);
     }
 }

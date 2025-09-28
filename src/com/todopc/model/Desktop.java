@@ -1,35 +1,36 @@
 package com.todopc.model;
 
-
 public class Desktop extends Equipo {
-private int ramGB;
-private int almacenamientoGB;
-private String tipoTorre; // Mini/Mid/Full Tower
+    private int memoriaRamGB;
+    private String tarjetaGrafica;
+    private String tamanoTorre;     // Mini / Mid / Full
+    private int discoDuroGB;
 
+    public Desktop(String fabricante, String modelo, String microprocesador,
+                   int memoriaRamGB, String tarjetaGrafica, String tamanoTorre, int discoDuroGB) {
+        super(fabricante, modelo, microprocesador);
+        this.memoriaRamGB = memoriaRamGB;
+        this.tarjetaGrafica = tarjetaGrafica;
+        this.tamanoTorre = tamanoTorre;
+        this.discoDuroGB = discoDuroGB;
+    }
 
-public Desktop(String marca, String modelo, double precio, int ramGB, int almacenamientoGB, String tipoTorre) {
-super(marca, modelo, precio);
-this.ramGB = ramGB;
-this.almacenamientoGB = almacenamientoGB;
-this.tipoTorre = tipoTorre;
-}
+    public int getMemoriaRamGB() { return memoriaRamGB; }
+    public void setMemoriaRamGB(int memoriaRamGB) { this.memoriaRamGB = memoriaRamGB; }
 
+    public String getTarjetaGrafica() { return tarjetaGrafica; }
+    public void setTarjetaGrafica(String tarjetaGrafica) { this.tarjetaGrafica = tarjetaGrafica; }
 
-public int getRamGB() { return ramGB; }
-public void setRamGB(int ramGB) { this.ramGB = ramGB; }
+    public String getTamanoTorre() { return tamanoTorre; }
+    public void setTamanoTorre(String tamanoTorre) { this.tamanoTorre = tamanoTorre; }
 
+    public int getDiscoDuroGB() { return discoDuroGB; }
+    public void setDiscoDuroGB(int discoDuroGB) { this.discoDuroGB = discoDuroGB; }
 
-public int getAlmacenamientoGB() { return almacenamientoGB; }
-public void setAlmacenamientoGB(int almacenamientoGB) { this.almacenamientoGB = almacenamientoGB; }
-
-
-public String getTipoTorre() { return tipoTorre; }
-public void setTipoTorre(String tipoTorre) { this.tipoTorre = tipoTorre; }
-
-
-@Override
-public String toString() {
-return "[Desktop] " + super.toString() +
-String.format(" | RAM: %dGB | Almacenamiento: %dGB | Torre: %s", ramGB, almacenamientoGB, tipoTorre);
-}
+    @Override
+    public String toString() {
+        return "[Desktop] " + super.toString() +
+                String.format(" | RAM: %dGB | GPU: %s | Torre: %s | HDD/SSD: %dGB",
+                        memoriaRamGB, tarjetaGrafica, tamanoTorre, discoDuroGB);
+    }
 }

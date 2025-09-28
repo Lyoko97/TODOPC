@@ -53,73 +53,108 @@ public class AppTODOPC {
             return;
         }
 
-        String marca = InputUtils.promptNonEmpty("Marca:");
-        if (marca == null) {
-            return;
-        }
-        String modelo = InputUtils.promptNonEmpty("Modelo:");
-        if (modelo == null) {
-            return;
-        }
-        Double precio = InputUtils.promptPositiveDouble("Precio ($):");
-        if (precio == null) {
-            return;
-        }
-
         switch (t) {
-            case 0: // Desktop
-                Integer ramD = InputUtils.promptPositiveInt("RAM (GB):");
-                if (ramD == null) {
+            case 0: { // Desktop
+                String fab = InputUtils.promptNonEmpty("Fabricante:");
+                if (fab == null) {
                     return;
                 }
-                Integer almD = InputUtils.promptPositiveInt("Almacenamiento (GB):");
-                if (almD == null) {
+                String mod = InputUtils.promptNonEmpty("Modelo:");
+                if (mod == null) {
                     return;
                 }
-                String torre = InputUtils.promptNonEmpty("Tipo de torre (Mini/Mid/Full):");
+                String micro = InputUtils.promptNonEmpty("Microprocesador:");
+                if (micro == null) {
+                    return;
+                }
+                Integer ram = InputUtils.promptPositiveInt("Memoria (RAM) en GB:");
+                if (ram == null) {
+                    return;
+                }
+                String gpu = InputUtils.promptNonEmpty("Tarjeta gráfica:");
+                if (gpu == null) {
+                    return;
+                }
+                String torre = InputUtils.promptNonEmpty("Tamaño de torre (Mini/Mid/Full):");
                 if (torre == null) {
                     return;
                 }
-                inv.addDesktop(new Desktop(marca, modelo, precio, ramD, almD, torre));
-                JOptionPane.showMessageDialog(null, "Desktop registrado correctamente.");
-                break;
+                Integer disco = InputUtils.promptPositiveInt("Capacidad disco duro (GB):");
+                if (disco == null) {
+                    return;
+                }
 
-            case 1: // Laptop
-                Integer ramL = InputUtils.promptPositiveInt("RAM (GB):");
-                if (ramL == null) {
+                inv.addDesktop(new Desktop(fab, mod, micro, ram, gpu, torre, disco));
+                JOptionPane.showMessageDialog(null, "Desktop registrada correctamente.");
+                break;
+            }
+
+            case 1: { // Laptop
+                String fab = InputUtils.promptNonEmpty("Fabricante:");
+                if (fab == null) {
                     return;
                 }
-                Integer almL = InputUtils.promptPositiveInt("Almacenamiento (GB):");
-                if (almL == null) {
+                String mod = InputUtils.promptNonEmpty("Modelo:");
+                if (mod == null) {
                     return;
                 }
-                Double pulgadas = InputUtils.promptPositiveDouble("Pantalla (pulgadas):");
-                if (pulgadas == null) {
+                String micro = InputUtils.promptNonEmpty("Microprocesador:");
+                if (micro == null) {
                     return;
                 }
-                Double peso = InputUtils.promptPositiveDouble("Peso (kg):");
-                if (peso == null) {
+                Integer ram = InputUtils.promptPositiveInt("Memoria (RAM) en GB:");
+                if (ram == null) {
                     return;
                 }
-                Integer bateria = InputUtils.promptPositiveInt("Batería (Wh):");
-                if (bateria == null) {
+                Double pantalla = InputUtils.promptPositiveDouble("Tamaño pantalla (pulgadas):");
+                if (pantalla == null) {
                     return;
                 }
-                inv.addLaptop(new Laptop(marca, modelo, precio, ramL, almL, pulgadas, peso, bateria));
+                Integer disco = InputUtils.promptPositiveInt("Capacidad disco duro (GB):");
+                if (disco == null) {
+                    return;
+                }
+
+                inv.addLaptop(new Laptop(fab, mod, micro, ram, pantalla, disco));
                 JOptionPane.showMessageDialog(null, "Laptop registrada correctamente.");
                 break;
+            }
 
-            case 2: // Tablet
-                String fabricante = InputUtils.promptNonEmpty("Fabricante:");
+            case 2: { // Tablet
+                String fab = InputUtils.promptNonEmpty("Fabricante:");
+                if (fab == null) {
+                    return;
+                }
+                String mod = InputUtils.promptNonEmpty("Modelo:");
+                if (mod == null) {
+                    return;
+                }
                 String micro = InputUtils.promptNonEmpty("Microprocesador:");
+                if (micro == null) {
+                    return;
+                }
                 Double pantalla = InputUtils.promptPositiveDouble("Tamaño diagonal de pantalla (pulgadas):");
-                String tipoPantalla = InputUtils.promptNonEmpty("Tipo de pantalla (Capacitiva/Resistiva):");
-                Integer memoria = InputUtils.promptPositiveInt("Tamaño memoria NAND (GB):");
+                if (pantalla == null) {
+                    return;
+                }
+                String tipo = InputUtils.promptNonEmpty("¿Capacitiva o Resistiva?");
+                if (tipo == null) {
+                    return;
+                }
+                Integer nand = InputUtils.promptPositiveInt("Tamaño memoria NAND (GB):");
+                if (nand == null) {
+                    return;
+                }
                 String so = InputUtils.promptNonEmpty("Sistema Operativo:");
-                inv.addTablet(new Tablet(fabricante, modelo, precio, micro, pantalla, tipoPantalla, memoria, so));
-                JOptionPane.showMessageDialog(null, "Tablet registrada correctamente.");
+                if (so == null) {
+                    return;
+                }
 
+                inv.addTablet(new Tablet(fab, mod, micro, pantalla, tipo, nand, so));
+                JOptionPane.showMessageDialog(null, "Tablet registrada correctamente.");
                 break;
+            }
+
         }
     }
 
